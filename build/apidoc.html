@@ -61,12 +61,208 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.slackbots">module slackbots</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.slackbots.slackbots">
+            function <span class="apidocSignatureSpan"></span>slackbots
+            <span class="apidocSignatureSpan">(params)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.slackbots" id="apidoc.module.slackbots">module slackbots</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.slackbots.slackbots" id="apidoc.element.slackbots.slackbots">
+        function <span class="apidocSignatureSpan"></span>slackbots
+        <span class="apidocSignatureSpan">(params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Bot extends EventEmitter {
+<span class="apidocCodeCommentSpan">    /**
+     * @param {object} params
+     * @constructor
+     */
+</span>
+     constructor(params) {
+         super(params);
+         this.token = params.token;
+         this.name = params.name;
+
+         console.assert(params.token, &#x27;token must be defined&#x27;);
+         this.login();
+     }
+
+    /**
+     * Starts a Real Time Messaging API session
+     */
+     login() {
+         this._api(&#x27;rtm.start&#x27;).then((data) =&#x3e; {
+             this.wsUrl = data.url;
+             this.self = data.self;
+             this.team = data.team;
+             this.channels = data.channels;
+             this.users = data.users;
+             this.ims = data.ims;
+             this.groups = data.groups;
+
+             this.emit(&#x27;start&#x27;);
+
+             this.connect();
+         }).fail((data) =&#x3e; {
+             this.emit(&#x27;error&#x27;, new Error(data.error ? data.error : data));
+         }).done();
+    }
+
+    /**
+     * Establish a WebSocket connection
+     */
+     connect() {
+         this.ws = new WebSocket(this.wsUrl);
+
+         this.ws.on(&#x27;open&#x27;, function(data) {
+             this.emit(&#x27;open&#x27;, data);
+         }.bind(this));
+
+         this.ws.on(&#x27;close&#x27;, function(data) {
+             this.emit(&#x27;close&#x27;, data);
+         }.bind(this));
+
+         this.ws.on(&#x27;message&#x27;, function(data) {
+             try {
+                 this.emit(&#x27;message&#x27;, JSON.parse(data));
+             } catch (e) {
+                 console.log(e);
+             }
+         }.bind(this));
+     }
+
+    /**
+     * Get channels
+     * @returns {vow.Promise}
+     */
+     getChannels() {
+         if (this.channels) {
+             return Vow.fulfill({ channels: this.channels });
+         }
+         return this._api(&#x27;channels.list&#x27;);
+      }
+
+    /**
+     * Get users
+     * @returns {vow.Promise}
+     */
+     getUsers() {
+          if (this.users) {
+              return Vow.fulfill({ members: this.users });
+          }
+
+          return this._api(&#x27;users.list&#x27;);
+     }
+
+    /**
+     * Get groups
+     * @returns {vow.Promise}
+     */
+    getGroups() {
+        if (this.groups) {
+            return Vow.fulfill({ groups: this.groups });
+        }
+
+        return this._api(&#x27;groups.list&#x27;);
+    }
+
+    /**
+     * Get user by name
+     * @param {string} name
+     * @returns {object}
+     */
+    getUser(name) {
+        return this.getUsers().then(function(data) {
+            var res = _.find(data.members, { name: name });
+
+            console.assert(res, &#x27;user not found&#x27;);
+            return res;
+        });
+    }
+
+    /**
+     * Get channel by name
+     * @param {string} name
+     * @returns {object}
+     */
+    getChannel(name) {
+        return this.getChannels().then(function(data) {
+            var res = _.find(data.channels, { name: name });
+
+            console.assert(res, &#x27;channel not found&#x27;);
+            return res;
+        });
+    }
+
+    /**
+     * Get group by name
+     * @param {string} name
+     * @returns {object}
+     */
+    getGroup(name) {
+        return this.getGroups().then(function(data) {
+            var res = _.find(data.groups, { name: name });
+
+            console.assert(res, &#x27;group not found&#x27;);
+            return res;
+        });
+    }
+
+    /**
+     * Get user by id
+     * @param {string} id
+     * @returns {object}
+     */
+    getUserById(id) {
+        return this.getUsers().then(function(data) {
+            var res = _.find(data.members, { id: id });
+
+            console.assert(res, &#x27;user not found&#x27;);
+            return res;
+        });
+    }
+
+     /**
+      * Get channel by id
+      * @param {string} id
+      * @returns {object}
+      */
+    getChannelById(id) {
+        return this.getChannels().then(function(data) {
+            var res = _.find(data.channels, { id: id });
+
+            console.assert(res, &#x27;channel not found&#x27;);
+            return res;
+        });
+    }
+
+     /**
+      * Get group by id
+      * @param {string} id
+      * @returns {object}
+     */
+    getGroupById(id) {
+        return this.getGroups().then(function(data) {
+            var res = _.find(data.groups, { id: id });
+
+            console.assert(res, &#x27;group not found&#x27;);
+            retur ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
