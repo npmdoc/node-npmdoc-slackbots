@@ -1,9 +1,14 @@
-# api documentation for  [slackbots (v1.0.2)](https://github.com/mishk0/slack-bot-api)  [![npm package](https://img.shields.io/npm/v/npmdoc-slackbots.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-slackbots) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-slackbots.svg)](https://travis-ci.org/npmdoc/node-npmdoc-slackbots)
+# npmdoc-slackbots
+
+#### api documentation for  [slackbots (v1.0.2)](https://github.com/mishk0/slack-bot-api)  [![npm package](https://img.shields.io/npm/v/npmdoc-slackbots.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-slackbots) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-slackbots.svg)](https://travis-ci.org/npmdoc/node-npmdoc-slackbots)
+
 #### Simple API for Slack
 
-[![NPM](https://nodei.co/npm/slackbots.png?downloads=true)](https://www.npmjs.com/package/slackbots)
+[![NPM](https://nodei.co/npm/slackbots.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/slackbots)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-slackbots/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-slackbots_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-slackbots/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-slackbots/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-slackbots/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-slackbots/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-slackbots/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-slackbots/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Mikhail Mokrushin",
-        "email": "mokrushin.ms@ya.ru"
+        "name": "Mikhail Mokrushin"
     },
     "bugs": {
         "url": "https://github.com/mishk0/slack-bot-api/issues"
@@ -50,13 +54,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "mishk0",
-            "email": "mokrushin.ms@ya.ru"
+            "name": "mishk0"
         }
     ],
     "name": "slackbots",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mishk0/slack-bot-api.git"
@@ -67,16 +69,6 @@
     "version": "1.0.2"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module slackbots](#apidoc.module.slackbots)
-
-
-
-# <a name="apidoc.module.slackbots"></a>[module slackbots](#apidoc.module.slackbots)
 
 
 
